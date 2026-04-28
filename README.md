@@ -68,3 +68,4 @@ public void registraUsuario(String nome)
     _usuarios.add(usuario);
 }
 ```
+---
