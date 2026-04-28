@@ -29,17 +29,18 @@ public void registraUsuario(String nome)
 }
 
 ## Identificação de Maus Cheiros
+## Identificação de Maus Cheiros
 - Mau cheiro: Condicionais Aninhadas (Nested Conditionals)
 - Tipo: Complexidade de código e baixa legibilidade
 - Impacto: Dificuldade de entendimento, manutenção e evolução do código
 
-
+## Técnica de Refatoração Aplicada
 ## Técnica de Refatoração Aplicada
 - Replace Nested Conditional with Guard Clauses
 - Aplicação do princípio fail-fast, tratando os casos inválidos logo no início do método
 - Redução do aninhamento e maior clareza do fluxo principal
 
-
+## Código Final (Depois da Refatoração)
 ## Código Final (Depois da Refatoração)
 - Após a refatoração, o método passou a utilizar cláusulas de guarda, tornando o fluxo principal mais simples, direto e legível.
 
