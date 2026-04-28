@@ -1,0 +1,18 @@
+public void registraUsuario(String nome)
+        throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
+        UsuarioInexistenteException {
+    
+    if (nome == null) 
+        throw new UsuarioInexistenteException("--->Não pode registrar usuario inexistente!");
+    
+    if (nome.isEmpty()) 
+        throw new UsuarioComNomeVazioException("--->Não pode registrar usuario com nome vazio!");
+
+    Usuario usuario = new Usuario(nome);
+    
+    if (_usuarios.contains(usuario)) 
+        throw new UsuarioJaRegistradoException("--->Já existe usuário com o nome \"" + nome + "\"! Use outro nome!");
+    
+    _usuarios.add(usuario);
+}
+
