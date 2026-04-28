@@ -1,3 +1,14 @@
-Evidências de execução 
+A imagem abaixo comprova a execução bem-sucedida (estado verde) do método
+`registraUsuario(String)` após o ciclo de refatoração, em ambiente online
+(JDoodle).
 
 
+``
+
+
+``
+
+
+
+
+---
