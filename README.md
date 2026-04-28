@@ -69,3 +69,22 @@ public void registraUsuario(String nome)
 }
 ```
 ---
+
+### Evidência de Execução
+
+A imagem abaixo comprova a execução bem-sucedida (estado verde) do método
+`registraUsuario(String)` após o ciclo de refatoração, em ambiente online
+(JDoodle).
+
+
+``
+<img width="1908" height="962" alt="image" src="https://github.com/user-attachments/assets/26f3a83f-7f44-49c9-b2ff-7b6d56c8211d" />
+
+
+``
+<img width="1903" height="922" alt="image" src="https://github.com/user-attachments/assets/3f80d057-fee3-4099-a215-94477649b493" />
+
+
+
+
+---
