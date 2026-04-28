@@ -32,9 +32,9 @@ public void registraUsuario(String nome)
 ## Lista de Maus Cheiros Identificados
 Relacionados aos tipos exercitados na Semana 2 do curso:
 
-1. [cite_start]**Complexidade Condicional (Nested Conditionals):** Trecho com `if` dentro de `if` [cite: 66-68].
-2. [cite_start]**Cláusulas Else Desnecessárias:** Uso de `else` após comandos de `throw` [cite: 66-68].
-3. [cite_start]**Falta de Clareza:** O fluxo principal de sucesso está oculto por validações aninhadas [cite: 66-68].
+1. **Complexidade Condicional (Nested Conditionals):** Trecho com `if` dentro de `if`. 
+2. **Cláusulas Else Desnecessárias:** Uso de `else` após comandos de `throw`.
+3. **Falta de Clareza:** O fluxo principal de sucesso está oculto por validações aninhadas.
 
 ---
 
