@@ -1,43 +1,64 @@
-# Refatoração: Guard Clauses no método `registraUsuario`
+# Relatório de Refatoração – Tarefa Coursera
 
 ## Contexto
-Este repositório contém o exercício de refatoração do método `registraUsuario` da classe `Biblioteca`.
+Este repositório apresenta a refatoração do método `registraUsuario` da classe `Biblioteca`.  
+O objetivo foi melhorar a **legibilidade**, reduzir a **complexidade condicional** e tornar o código mais simples de manter, **sem alterar o comportamento externo**, conforme os princípios de refatoração descritos por Martin Fowler.
 
-## Antes (código original)
-> Cole aqui o código original do método `registraUsuario` (antes da refatoração).
+---
 
-## Mau Cheiro (Code Smell)
-- Complexidade Condicional
-- Código em Escada (excesso de if/else aninhados)
+## Código Original (Antes da Refatoração)
 
-## Técnica aplicada
-- Replace Nested Conditional with Guard Clauses (fail-fast)
+O código original apresentava o mau cheiro de **Complexidade Condicional**, caracterizado por múltiplos níveis de `if` aninhados (código em escada), o que dificultava a leitura e a manutenção.
 
-## Depois (código refatorado)
 ```java
 public void registraUsuario(String nome)
         throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
         UsuarioInexistenteException {
-    
-    // 1. Validação de nulidade (Guarda)
-    if (nome == null) {
+    if (nome != null) {
+        if (!nome.isEmpty()) {
+            Usuario usuario = new Usuario(nome);
+            if (!_usuarios.contains(usuario)) {
+                _usuarios.add(usuario);
+            } else
+                throw new UsuarioJaRegistradoException("--->Já existe usuário com o nome \""
+                        + nome + "\"! Use outro nome!");
+        } else
+            throw new UsuarioComNomeVazioException("--->Não pode registrar usuario com nome vazio!");
+    } else
         throw new UsuarioInexistenteException("--->Não pode registrar usuario inexistente!");
-    }
+}
 
-    // 2. Validação de nome vazio (Guarda)
-    if (nome.isEmpty()) {
+## Identificação de Maus Cheiros
+- Mau cheiro: Condicionais Aninhadas (Nested Conditionals)
+- Tipo: Complexidade de código e baixa legibilidade
+- Impacto: Dificuldade de entendimento, manutenção e evolução do código
+
+
+## Técnica de Refatoração Aplicada
+- Replace Nested Conditional with Guard Clauses
+- Aplicação do princípio fail-fast, tratando os casos inválidos logo no início do método
+- Redução do aninhamento e maior clareza do fluxo principal
+
+
+## Código Final (Depois da Refatoração)
+- Após a refatoração, o método passou a utilizar cláusulas de guarda, tornando o fluxo principal mais simples, direto e legível.
+
+public void registraUsuario(String nome)
+        throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
+        UsuarioInexistenteException {
+    
+    if (nome == null) 
+        throw new UsuarioInexistenteException("--->Não pode registrar usuario inexistente!");
+    
+    if (nome.isEmpty()) 
         throw new UsuarioComNomeVazioException("--->Não pode registrar usuario com nome vazio!");
-    }
 
     Usuario usuario = new Usuario(nome);
     
-    // 3. Validação de duplicidade (Guarda)
-    if (_usuarios.contains(usuario)) {
-        throw new UsuarioJaRegistradoException("--->Já existe usuário com o nome \"" 
-                + nome + "\"! Use outro nome!");
-    }
-
-    // 4. Fluxo principal limpo
+    if (_usuarios.contains(usuario)) 
+        throw new UsuarioJaRegistradoException(
+            "--->Já existe usuário com o nome \"" + nome + "\"! Use outro nome!"
+        );
+    
     _usuarios.add(usuario);
-}# SAB-Refatoracao-TDD
-SAB-Refatoracao-TDD
+}
